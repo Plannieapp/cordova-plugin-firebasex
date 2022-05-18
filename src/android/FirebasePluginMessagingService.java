@@ -199,6 +199,9 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Image: " + image);
             Log.d(TAG, "image Type: " + imageType);
 
+            if(data.get("receiver").equals("intercom_sdk")) {
+                body = data.get("body");
+            }
 
             if (!TextUtils.isEmpty(body) || !TextUtils.isEmpty(title) || (data != null && !data.isEmpty())) {
                 boolean showNotification = (FirebasePlugin.inBackground() || !FirebasePlugin.hasNotificationsCallback() || foregroundNotification) && (!TextUtils.isEmpty(body) || !TextUtils.isEmpty(title));
@@ -246,6 +249,14 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
                 channelId = FirebasePlugin.defaultChannelId;
             }
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                if (channelId == null) {
+                    CharSequence name = "General";
+                    int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                    NotificationChannel channel = new NotificationChannel("1", name, importance);
+                    NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                    notificationManager.createNotificationChannel(channel);
+                    channelId = channel.getId();
+                }
                 Log.d(TAG, "Channel ID: "+channelId);
             }
 
