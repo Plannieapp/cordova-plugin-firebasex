@@ -199,7 +199,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Image: " + image);
             Log.d(TAG, "image Type: " + imageType);
 
-            if(data.get("receiver").equals("intercom_sdk")) {
+            if(data != null && data.get("receiver") != null && data.get("receiver").equals("intercom_sdk")) {
                 body = data.get("body");
             }
 
