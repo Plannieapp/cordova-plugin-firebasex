@@ -149,7 +149,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
                 sound = notification.getSound();
                 color = notification.getColor();
                 icon = notification.getIcon();
-                if (notification.getImageUrl() != null) {
+                if (notification != null && notification.getImageUrl() != null) {
                     image = notification.getImageUrl().toString();
                 }
             }else{
