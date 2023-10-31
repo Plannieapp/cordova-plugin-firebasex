@@ -1,9 +1,55 @@
-# Version 14.2.1-cli
+# Version 16.1.0
+* (iOS) feat: add support for IOS_FCM_ENABLED variable to allow disabling FCM functionality on iOS
+    * Merged from PR [#797](https://github.com/dpa99c/cordova-plugin-firebasex/pull/797)
+* (types) feat: add support for lastUpdate and created in Firestore operations
+    * Merged from PR [#793](https://github.com/dpa99c/cordova-plugin-firebasex/pull/793)
+* (iOS) doc: Tutorial to make the necessary configurations to send images in notifications
+    * Merged from PR [#798](https://github.com/dpa99c/cordova-plugin-firebasex/pull/798)
+* (iOS) Fix foreground notifications not being displayed after calling grantPermission when permissions haven't been previously granted
+    * Merged from PR [#800](https://github.com/dpa99c/cordova-plugin-firebasex/pull/800)
+* doc: add server side verification documentation to authenticateUserWithGoogle()
+    * Merged from PR [#805](https://github.com/dpa99c/cordova-plugin-firebasex/pull/805)
+* (iOS) build: Use precompiled FirebaseFirestore on first pod install
+    * Merged from PR [#752](https://github.com/dpa99c/cordova-plugin-firebasex/pull/752)
+* (iOS) feat: Add registerApplicationDidBecomeActiveListener() and registerApplicationDidEnterBackgroundListener() methods to expose native iOS app delegate methods
+* (Android) build: Add support for `cordova-android@12` - use cordova-android config variable version
+    * Merged from PR [#807](https://github.com/dpa99c/cordova-plugin-firebasex/pull/807)
+* (Android) update: Pin latest Firebase SDK component versions as of [01 May 2023](https://firebase.google.com/support/release-notes/android#2023-05-01)
+* (iOS) update: Pin latest Firebase SDK component version (v10.10.0) as of [23 May 2023](https://firebase.google.com/support/release-notes/ios#version_10100_-_may_23_2023)
+
+
+# Version 16.0.0
+* (iOS & Android) **BREAKING CHANGE**: Changed signature of `verifyPhoneNumber()` to pass optional arguments as an object.
+* (iOS & Android) feat: Add support for multi-factor authentication
+     * Added `enrollSecondAuthFactor()`, `verifySecondAuthFactor()`, `listEnrolledSecondAuthFactors()`, `unenrollSecondAuthFactor()`, `verifyBeforeUpdateEmail()`
+     * Resolves [#714](https://github.com/dpa99c/cordova-plugin-firebasex/issues/714)
+* (iOS & Android) feat: Add `authenticateUserWithFacebook()`
+	* Resolves [#526](https://github.com/dpa99c/cordova-plugin-firebasex/issues/526)
+
+# Version 15.0.0
+* (Android) Update pinned Firebase SDK component versions to [BOM v31.1.0 - November 17, 2022](https://firebase.google.com/support/release-notes/android#2022-11-17)
+* (iOS) Update pinned version of Firebase SDK to [v10.2.0 - November 15, 2022](https://firebase.google.com/support/release-notes/ios#version_1020_-_november_15_2022)
+  - **BREAKING CHANGE**: Minimum supported iOS version is now v11.0 (with Firebase SDK v9 it was v10.0) - [see here](https://firebase.google.com/support/release-notes/ios#version_1000_-_october_10_2022)
+  - Update pinned versions of Google Sign In and Google Tag Manager libraries to latest to align with Firebase SDK v10
+* (iOS) fix: Fix CLI builds with Xcode 14 and Cordova CLI.
+  * Resolves [#766](https://github.com/dpa99c/cordova-plugin-firebasex/issues/766)
+* (iOS) feat: Add `IOS_GOOGLE_SIGNIN_VERSION` AND `IOS_GOOGLE_TAG_MANAGER_VERSION` plugin vars to enable overriding default pinned versions at plugin install time.
+* (iOS) feat: Add the authorization code to the credential object returned after authentication via Sign in with Apple
+  * Merged from PR [#761](https://github.com/dpa99c/cordova-plugin-firebasex/pull/761)
+* (Android) fix: Notification opening app for Android 12
+    * Resolves [#763](https://github.com/dpa99c/cordova-plugin-firebasex/issues/763), [#764](https://github.com/dpa99c/cordova-plugin-firebasex/issues/764)
+    * Merged from PR [#765](https://github.com/dpa99c/cordova-plugin-firebasex/pull/765)
+* (Android) feat: Add support for Android push notification localization in foreground notifications
+    * Merged from PR [#772](https://github.com/dpa99c/cordova-plugin-firebasex/pull/772)
+* (Android) feat: Handle checking/requesting POST_NOTIFICATIONS runtime permission on Android 13+.
+    * Resolves [#777](https://github.com/dpa99c/cordova-plugin-firebasex/issues/777)
+
+# Version 14.2.1
 * (iOS) bugfix: remove openURL delegate that was erroneously re-added by merge error.
     * Re-implements PR [#731](https://github.com/dpa99c/cordova-plugin-firebasex/pull/731)
     * Resolves [#718](https://github.com/dpa99c/cordova-plugin-firebasex/issues/718)
 
-# Version 14.2.0-cli
+# Version 14.2.0
 * (Android) bugfix: Fix no notifications on Android 12 and above
     * Merged from PR [#747](https://github.com/dpa99c/cordova-plugin-firebasex/pull/747)
     * Resolves [#746](https://github.com/dpa99c/cordova-plugin-firebasex/issues/746)
@@ -13,7 +59,7 @@
     * Resolves [#735](https://github.com/dpa99c/cordova-plugin-firebasex/issues/735)
 * (iOS) feat: add support for `IOS_FIREBASE_SDK_VERSION` plugin variable to override the Firebase iOS SDK versions specified in `plugin.xml`
 
-# Version 14.1.0-cli
+# Version 14.1.0
 * (Doc) bugfix: Fix markdown issue caused by unescaped HTML tags.
     * Resolves [#707](https://github.com/dpa99c/cordova-plugin-firebasex/issues/707)
 * (Android) bugfix: Fix null pointer exception when missing notification image
@@ -33,7 +79,7 @@
 * (iOS & Android) feat: Add support for FIREBASE_FCM_AUTOINIT_ENABLED plugin variable to set FCM autoinit on app startup at configuration time
 
 
-# Version 14.0.0-cli
+# Version 14.0.0
 * (iOS) chore: Minor version update to Firebase iOS SDK to latest ([Version 8.11.0 - January 18, 2022](https://firebase.google.com/support/release-notes/ios#version_8110_-_january_18_2022))
     * BREAKING CHANGE: Requires Cocoapods v1.11.2+
 * (Android) chore: Update pinned Firebase Android SDK dependencies to latest ((January 25, 2022)[https://developers.google.com/android/guides/releases#january_25_2022])
@@ -217,7 +263,7 @@
 # Version 10.1.0-cli
 * (iOS) Use precompiled pod for Firestore to reduce build times.
     * *BREAKING CHANGE:* Requires `cocoapods>=1.9` (previously `cocoapods>=1.8`).
-    * Adds hook script to check local cocoapods version during plugin install. 
+    * Adds hook script to check local cocoapods version during plugin install.
     * Based on PR [#440](https://github.com/dpa99c/cordova-plugin-firebasex/pull/440).
     * Resolves [#407](https://github.com/dpa99c/cordova-plugin-firebasex/issues/407).
 * (Android) Fixed regression bug related to default Crashlytics permission.
@@ -239,20 +285,20 @@
 * (iOS) Fix escaping already escaped json.
     * Merged from PR [#430](https://github.com/dpa99c/cordova-plugin-firebasex/pull/430).
     * Further resolves [#401](https://github.com/dpa99c/cordova-plugin-firebasex/issues/401).
-* (Android): Fix parsing of existing `colors.xml` when it contains multiple existing `<color>` to prevent overwriting the existing values. 
+* (Android): Fix parsing of existing `colors.xml` when it contains multiple existing `<color>` to prevent overwriting the existing values.
     * Resolves [#436](https://github.com/dpa99c/cordova-plugin-firebasex/issues/436).
 * (Android, iOS): Return success/failure result when subscribing/unsubscribing from topics.
     * Resolves [#422](https://github.com/dpa99c/cordova-plugin-firebasex/issues/422).
-    
+
 # Version 9.1.2-cli
 * (Android) Fix retrieval of auth provider ID - [see here for more info](https://github.com/firebase/FirebaseUI-Android/issues/329#issuecomment-564409912)
 * (iOS) Align retrieval of auth provider ID with Android.
 * (Typing): correct return type of a method
     * Merged from PR [#390](https://github.com/dpa99c/cordova-plugin-firebasex/pull/390).
 * (Documentation) Update guidance and requirements when opening issues
-* (iOS): Fix escaping of line endings in multi-line log messages being sent from native iOS implementation to JS console. 
+* (iOS): Fix escaping of line endings in multi-line log messages being sent from native iOS implementation to JS console.
     * Resolves [#401](https://github.com/dpa99c/cordova-plugin-firebasex/issues/401).
-* (iOS): Set shouldEstablishDirectChannel via a  plugin variable which defaults to false. 
+* (iOS): Set shouldEstablishDirectChannel via a  plugin variable which defaults to false.
     Resolves [#406](https://github.com/dpa99c/cordova-plugin-firebasex/issues/406).
 * Bump androidx plugin version dependencies.
     Resolves [#418](https://github.com/dpa99c/cordova-plugin-firebasex/issues/418).
@@ -263,13 +309,13 @@
     * See https://firebase.google.com/support/release-notes/ios#version_6230_-_april_21_2020.
 * (Android) Bump Firebase SDK (and other Gradle dependencies) to latest versions.
     * See https://firebase.google.com/support/release-notes/android#2020-04-23
-    
+
 # Version 9.1.0-cli
 * (Android & iOS) *BREAKING CHANGE*: Add support for filters to `fetchDocumentInFirestoreCollection()`
     * *BREAKING CHANGE* to function signature.
     * Merged from PR [#367](https://github.com/dpa99c/cordova-plugin-firebasex/pull/367).
-* (Android) Fix regression bug which causes CLI builds to fail on Android. 
-Resolves [#369](https://github.com/dpa99c/cordova-plugin-firebasex/issues/369).  
+* (Android) Fix regression bug which causes CLI builds to fail on Android.
+Resolves [#369](https://github.com/dpa99c/cordova-plugin-firebasex/issues/369).
 
 # Version 9.0.3-cli
 * (Android & iOS) Add `reloadCurrentUser()`
@@ -279,7 +325,7 @@ Resolves [#369](https://github.com/dpa99c/cordova-plugin-firebasex/issues/369).
     * Merged from PR [#363](https://github.com/dpa99c/cordova-plugin-firebasex/pull/363).
 * (Android & iOS) Add `signInUserWithCustomToken()` AND `signInUserAnonymously()` auth methods
     * Merged from PR [#359](https://github.com/dpa99c/cordova-plugin-firebasex/pull/359).
-    
+
 # Version 9.0.2-cli
 
 * (Android): Don't display app icon for large notification icon on Android. Resolves [#343](https://github.com/dpa99c/cordova-plugin-firebasex/issues/343).
